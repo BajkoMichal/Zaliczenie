@@ -10,10 +10,35 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-    @FindBy(css = "span.hidden-sm-down")
-    WebElement singBtn;
 
-    public void goToSingInPage(){
-        singBtn.click();
+    @FindBy(xpath = "/html/body/main/header/nav/div/div/div[1]/div[2]/div[2]/div/a/span")
+    WebElement signBtn;
+    @FindBy(id = "field-email")
+    WebElement emailInput;
+    @FindBy(id = "field-password")
+    WebElement passwordInput;
+    @FindBy(id = "submit-login")
+    WebElement signInBtn;
+    @FindBy(xpath = "//*[@id=\"category-3\"]/a")
+    WebElement clothesBtn;
+
+    public void goToSingInPage() {
+        signBtn.click();
+    }
+
+    public void logIntoAccount(String Email, String Password) {
+        emailInput.sendKeys(Email);
+        passwordInput.sendKeys(Password);
+        signInBtn.click();
+
+    }
+    public void goToClothesPage() {
+        clothesBtn.click();
     }
 }
+
+
+
+
+
+
