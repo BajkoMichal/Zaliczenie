@@ -19,8 +19,8 @@ public class HomePage {
     WebElement passwordInput;
     @FindBy(id = "submit-login")
     WebElement signInBtn;
-    @FindBy(xpath = "//*[@id=\"category-3\"]/a")
-    WebElement clothesBtn;
+    @FindBy(xpath = "//*[@id=\"_desktop_logo\"]/a/img")
+    WebElement homeBtn;
 
     public void goToSingInPage() {
         signBtn.click();
@@ -32,10 +32,12 @@ public class HomePage {
         signInBtn.click();
 
     }
-    public void goToClothesPage() {
-        clothesBtn.click();
+
+    public void goToHomePage() {
+        homeBtn.click();
     }
 }
+
 
 
 

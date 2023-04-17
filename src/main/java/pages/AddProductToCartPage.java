@@ -5,12 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddProductToCart {
-    public AddProductToCart(WebDriver driver) {
+public class AddProductToCartPage {
+
+    public AddProductToCartPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-    @FindBy(xpath = "//*[@id=\"js-product-list\"]/div[1]/div[2]/article/div/div[1]/a/img")
-    WebElement productBtn;
+
+    @FindBy(css = "/#search_widget input.ui-autocomplete-input")
+    WebElement searchBar;
+    @FindBy(css = "#js-product-list .js-product .thumbnail-container .thumbnail")
+    WebElement productApproval;
     @FindBy(id = "group_1")
     WebElement sizeBtn;
     @FindBy(className = "material-icons touchspin-up")
@@ -20,8 +24,10 @@ public class AddProductToCart {
     @FindBy(className = "btn btn-primary")
     WebElement proceedToCheckoutBtn;
 
-    public void goToProductPage() {
-        productBtn.click();
+    public void enterSearch(String product) {
+        searchBar.sendKeys(product);
+        searchBar.submit();
+        productApproval.click();
     }
 
     public void chooseQuantity() {
